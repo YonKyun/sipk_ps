@@ -50,7 +50,7 @@
 			<td class="w-100"><?= $row['waktu_awal']; ?></td>
 		</tr>
 		<tr>
-			<td>Waktu Awal</td>
+			<td>Waktu Akhir</td>
 			<td class="px-2">:</td>
 			<td class="w-100"><?= $row['waktu_akhir']; ?></td>
 		</tr>
