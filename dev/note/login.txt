@@ -1,0 +1,15 @@
+=========================
+
+Login Admin
+- username: admin
+- password: admin
+
+Login Peserta 1
+- username: peserta1
+- password: peserta1
+
+Login Peserta 2
+- username: peserta2
+- password: peserta2
+
+=========================
