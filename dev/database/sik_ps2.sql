@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Agu 2024 pada 05.14
+-- Waktu pembuatan: 13 Agu 2024 pada 05.52
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -39,6 +39,22 @@ CREATE TABLE `bagan` (
   `skor` bigint(20) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Dumping data untuk tabel `bagan`
+--
+
+INSERT INTO `bagan` (`id_bagan`, `id_pendaftaran`, `id_user`, `id_kejuaraan`, `babak`, `nama`, `jenis_kelamin`, `kelas`, `skor`) VALUES
+(10, 1, 14, 6, 2, 'Apri', 'Laki-laki', 'A', 24),
+(12, 4, 17, 6, 2, 'Adnan', 'Laki-laki', 'A', 19),
+(13, 1, 14, 6, 1, 'Apri', 'Laki-laki', 'A', 0),
+(14, 4, 17, 6, 1, 'Adnan', 'Laki-laki', 'A', 0),
+(15, 2, 15, 6, 1, 'Rully', 'Laki-laki', 'A', 0),
+(16, 3, 16, 6, 1, 'Dimas', 'Laki-laki', 'A', 0),
+(17, 11, 24, 6, 1, 'Ridwan', 'Laki-laki', 'C', 0),
+(18, 13, 26, 6, 1, 'Ridho', 'Laki-laki', 'C', 0),
+(19, 14, 27, 6, 1, 'Agus', 'Laki-laki', 'C', 0),
+(20, 12, 25, 6, 1, 'Jiki', 'Laki-laki', 'C', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +69,32 @@ CREATE TABLE `catatan` (
   `skor` bigint(20) DEFAULT 0,
   `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `catatan`
+--
+
+INSERT INTO `catatan` (`id_catatan`, `id_riwayat`, `babak`, `nama`, `skor`, `active`) VALUES
+(1, 1, 1, 'Dimas', 0, 1),
+(2, 1, 1, 'Apri', 0, 1),
+(3, 1, 1, 'Rully', 0, 1),
+(4, 1, 1, 'Adnan', 0, 1),
+(5, 2, 1, 'Dimas', 17, 1),
+(6, 2, 1, 'Apri', 18, 1),
+(7, 2, 1, 'Rully', 20, 1),
+(8, 2, 1, 'Adnan', 23, 1),
+(9, 2, 2, 'Apri', 24, 1),
+(10, 2, 2, 'Adnan', 19, 1),
+(11, 3, 2, 'Apri', 24, 1),
+(12, 3, 2, 'Adnan', 19, 1),
+(13, 3, 1, 'Apri', 0, 1),
+(14, 3, 1, 'Adnan', 0, 1),
+(15, 3, 1, 'Rully', 0, 1),
+(16, 3, 1, 'Dimas', 0, 1),
+(17, 4, 1, 'Ridwan', 0, 1),
+(18, 4, 1, 'Ridho', 0, 1),
+(19, 4, 1, 'Agus', 0, 1),
+(20, 4, 1, 'Jiki', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +145,7 @@ INSERT INTO `kejuaraan` (`id_kejuaraan`, `nama_kejuaraan`, `seni1_putra1`, `seni
 (3, 'Kejuaraan Ketiga', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1677776400, 1680281940, '#C70039', 0),
 (4, 'Kejuaraan Keempat', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1712163600, 1714496340, '#85C1A1', 0),
 (5, 'Kejuaraan Kelima', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1746378000, 1748710740, '#F4D35E', 0),
-(6, 'UNUSIA PENCAK SILAT CHAMPIONSHIP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1723222800, 1723309200, '#077000', 1),
+(6, 'UNUSIA PENCAK SILAT CHAMPIONSHIP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 4, 4, NULL, NULL, NULL, 1723222800, 1723309200, '#077000', 1),
 (7, 'UMJ OPEN V', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1524762000, 1524934800, '#000000', 1),
 (8, 'PESTA PENCAK SILAT UNINDRA 2024', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1725469200, 1725728400, '#b89000', 1),
 (9, 'UIKA CHAMPIONSHIP 2024', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1729789200, 1729962000, '#108a00', 1),
@@ -144,7 +186,11 @@ INSERT INTO `pendaftaran` (`id_pendaftaran`, `id_user`, `id_kejuaraan`, `nama`, 
 (7, 20, 6, 'Bagas', 'Laki-laki', 0, 'Seni', 'Tunggal', 0, 1723432231, 0, 1),
 (8, 21, 6, 'Bagus', 'Laki-laki', 0, 'Seni', 'Tunggal', 0, 1723432290, 0, 1),
 (9, 22, 6, 'Heru', 'Laki-laki', 0, 'Seni', 'Tunggal', 0, 1723432363, 0, 1),
-(10, 23, 6, 'Heri', 'Laki-laki', 0, 'Seni', 'Tunggal', 0, 1723432433, 0, 1);
+(10, 23, 6, 'Heri', 'Laki-laki', 0, 'Seni', 'Tunggal', 0, 1723432433, 0, 1),
+(11, 24, 6, 'Ridwan', 'Laki-laki', 56, 'Tanding', 'C', 0, 1723519721, 1, 1),
+(12, 25, 6, 'Jiki', 'Laki-laki', 57, 'Tanding', 'C', 0, 1723519812, 1, 1),
+(13, 26, 6, 'Ridho', 'Laki-laki', 58, 'Tanding', 'C', 0, 1723519909, 1, 1),
+(14, 27, 6, 'Agus', 'Laki-laki', 58, 'Tanding', 'C', 0, 1723520006, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -163,6 +209,16 @@ CREATE TABLE `riwayat` (
   `waktu_akhir` varchar(12) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data untuk tabel `riwayat`
+--
+
+INSERT INTO `riwayat` (`id_riwayat`, `id_user`, `judul`, `nama_kejuaraan`, `jenis_kelamin`, `kelas`, `waktu_awal`, `waktu_akhir`, `active`) VALUES
+(1, 13, 'Kelas A UNUSIA', 'UNUSIA PENCAK SILAT CHAMPIONSHIP', 'Laki-laki', 'A', '2024-08-10', '2024-08-11', 1),
+(2, 13, 'Kelas A New', 'UNUSIA PENCAK SILAT CHAMPIONSHIP', 'Laki-laki', 'A', '2024-08-10', '2024-08-11', 1),
+(3, 13, 'Kelas A', 'UNUSIA PENCAK SILAT CHAMPIONSHIP', 'Laki-laki', 'A', '2024-08-10', '2024-08-11', 1),
+(4, 13, 'Kelas C UNUSIA', 'UNUSIA PENCAK SILAT CHAMPIONSHIP', 'Laki-laki', 'C', '2024-08-10', '2024-08-11', 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +266,11 @@ INSERT INTO `user` (`id_user`, `id_kejuaraan`, `username`, `password`, `nama_use
 (20, NULL, 'bagas', '$2y$10$tD.tJK85OejI4M7rE5jPh.KmMrcNVQwYvjGXHMAu2YnirLpeNlcrW', 'Bagas', 'Laki-laki', NULL, 5, NULL, 1),
 (21, NULL, 'bagus', '$2y$10$V0u.X4sVfZ9A0pTDZElzL.W0glKqhm/rnbTj./fL9gIW9Pt48PjB.', 'Bagus', 'Laki-laki', NULL, 5, NULL, 1),
 (22, NULL, 'heru', '$2y$10$nPqhiSF10WK4JlhZy4iTL.zs.qf5vU5yKILKGgYQFMMfSSQyLi4Au', 'Heru', 'Laki-laki', NULL, 5, NULL, 1),
-(23, NULL, 'heri', '$2y$10$e7sDKYe1ipD4TlvLdzqGkOeFQ.eaWUuFExGzvnTwqHTzShe6eDO5K', 'Heri', 'Laki-laki', NULL, 5, NULL, 1);
+(23, NULL, 'heri', '$2y$10$e7sDKYe1ipD4TlvLdzqGkOeFQ.eaWUuFExGzvnTwqHTzShe6eDO5K', 'Heri', 'Laki-laki', NULL, 5, NULL, 1),
+(24, NULL, 'ridwan', '$2y$10$SEqSAJhSBRCt/kCSXLgWgeZuD75TbAanzXEvD0VhTlxE5wE4afLma', 'Ridwan', 'Laki-laki', 56, 5, NULL, 1),
+(25, NULL, 'jiki', '$2y$10$.ObREQTK2exnjvMz8F.eXOYh4I44TWW1tx.PxZR2.Vjzcok/UVEA.', 'Jiki', 'Laki-laki', 57, 5, NULL, 1),
+(26, NULL, 'ridho', '$2y$10$GbbKZt5i4SvMQuSa86M6kOEWZLMPlUwvhvcI1p0gAmexGoS2nubWS', 'Ridho', 'Laki-laki', 58, 5, NULL, 1),
+(27, NULL, 'agus', '$2y$10$N8l4IfTCnkxNWvGh6X3Yp.rx9SYGN/.lgCKy2XA0WHH/kmjc8wPa.', 'Agus', 'Laki-laki', 58, 5, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -260,13 +320,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `bagan`
 --
 ALTER TABLE `bagan`
-  MODIFY `id_bagan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bagan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `catatan`
 --
 ALTER TABLE `catatan`
-  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_catatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `kejuaraan`
@@ -278,19 +338,19 @@ ALTER TABLE `kejuaraan`
 -- AUTO_INCREMENT untuk tabel `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `id_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat`
 --
 ALTER TABLE `riwayat`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
